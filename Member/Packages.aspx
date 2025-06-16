@@ -96,15 +96,15 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <p class="mb-0 fs-6">Guranteed ROI:</p>
                                 <p class="mb-0 fw-medium fs-6 text-warning">
-                                    <asp:Label runat="server" ID="lbPerdays" Text='<%#Eval("Perdays") %>'></asp:Label>% Daily
+                                    <asp:Label runat="server" ID="lbPerdays" Text='<%#Eval("Perdays") %>'></asp:Label>% Monthly
                                 </p>
                             </div>
                         </div>
                         <div class="pricing-content d-flex flex-column gap-3">
                             <div class="d-flex align-items-center justify-content-between">
-                                <p class="mb-0 fs-6">Period:</p>
+                                <p class="mb-0 fs-6">Time Period:</p>
                                 <p class="mb-0 fw-medium fs-6 text-warning">
-                                    Daily 
+                                 <asp:Label runat="server" ID="lbdays" Text='<%#Eval("times") %>'></asp:Label> Months 
                                 </p>
                             </div>
                         </div>

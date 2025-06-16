@@ -77,11 +77,16 @@
                           </div>
                        <div class="form-group row">
                                               
-                         <label class="control-label col-lg-3 ">Admin Charge(10%) </label>     
+                         <label class="control-label col-lg-3 ">Admin Charge(5%) </label>     
 
                         <div class="col-lg-9">
                          <asp:TextBox ID="txtadmincharge" Text="" required="" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                          </div>
+         <%--                        <label class="control-label col-lg-3 ">TDS Charge(5%) </label>     
+
+                        <div class="col-lg-3">
+                         <asp:TextBox ID="txtTDS" Text="" required="" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
+                         </div>--%>
                                 
                             </div>
                                          <div class="form-group row">
@@ -107,10 +112,21 @@
                                  </div>
                              <div class="col-sm-offset-3 col-lg-4">
 
-   <asp:Button ID="btnaction" runat="server" Text="Withdraw"  OnClick="butsubmit_Click" CssClass="btn btn-block  btn-success btn-lg"/>
+   <asp:Button ID="btnaction" runat="server" Text="Withdraw"  OnClick="butsubmit_Click" CssClass="btn  btn-success btn-sm"/>
                
 
                   </div>  
+                           <br />
+
+                                <br />
+                                <div class=" row">
+                                    <label class="control-label text-success  col-lg-12">Terms & Condition.</label>
+                                    <br />
+                                     <label class="control-label text-danger col-lg-12">1)Your withdrawal amount will be credited to your bank account between 3 to 8 hours after the request is made.</label>
+                                    <label class="control-label text-danger col-lg-12">2) Withdrawals are allowed Monday to Friday, between 10:00 AM and 6:00 PM.</label>
+                                    <label class="control-label text-danger col-lg-12">2) Only 1 Transaction per day is permitted.</label>
+                                    <label class="control-label text-danger col-lg-12">1)  Admin is not responsible if the provided bank details is wrong.</label>
+                                </div>
        
             
           </div>

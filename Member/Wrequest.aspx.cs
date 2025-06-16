@@ -76,7 +76,7 @@ public partial class User_withdrraw : System.Web.UI.Page
     {
         txtAmt.Text = "";
       //  txtremark.Text = "";
-       // lbIncome.Text = "";
+        lbIncome.Text = "";
         txtTotal.Text = "";
         //txtfinal.Text = "";
        // txttds.Text = "";
@@ -130,7 +130,7 @@ public partial class User_withdrraw : System.Web.UI.Page
                     string id = SessionData.Get<string>("Newuser");
                     decimal finalamount = Convert.ToDecimal(lbIncome.Text.Trim());
                     widamount = Convert.ToDecimal(txtAmt.Text.Trim());
-                    if (finalamount >= widamount && widamount >= 100)
+                    if (finalamount >= widamount && widamount >= 250)
                  
                     {
                         int a = objamd.WithdrawRequest(0, SessionData.Get<string>("Newuser"), widamount, "Withdarw Amount", "Main Wallet","", "P");
@@ -159,7 +159,7 @@ public partial class User_withdrraw : System.Web.UI.Page
                             sccess.Visible = false;
                             //danger.Visible = false;
                             danger.Visible = true;
-                            lbdanger.Text = "Request Already Insert..?";
+                            lbdanger.Text = "Request Already Sent..?";
 
                         }
                         else
@@ -181,7 +181,7 @@ public partial class User_withdrraw : System.Web.UI.Page
                         sccess.Visible = false;
                         info.Visible = false;
                         warning.Visible = true;
-                        lbwarning.Text = "Balance is less then  withdraw  amount or  amount should be max of 100 INR";
+                        lbwarning.Text = "Balance is less then  withdraw  amount or  amount should be max of 250 INR";
 
                     }
                 //}
@@ -247,37 +247,56 @@ public partial class User_withdrraw : System.Web.UI.Page
 
     protected void txtAmt_TextChanged(object sender, EventArgs e)
     {
-        try 
+  
+        try
         {
+            string dayname = objtime.returnCurrentDay();
+            int time = Convert.ToInt32(objtime.returnCurrentSurverTimeHH());
             decimal finalamount = Convert.ToDecimal(lbIncome.Text.Trim());
             decimal reqAmt = Convert.ToDecimal(txtAmt.Text);
-            if (reqAmt >= 100)
+            if ((dayname != "Saturday" && dayname != "Sunday") && time >= 10 && time <= 18)
             {
-                decimal AdminCharge = (reqAmt * 10 / 100);
-                // decimal tds = (reqAmt * 5 / 100);
-                decimal amount = reqAmt - AdminCharge;
-                txtTotal.Text = amount.ToString();
-                txtadmincharge.Text = AdminCharge.ToString();
-               // txtTDS.Text = tds.ToString();
-                warning.Visible = false;
-                danger.Visible = false;
-                sccess.Visible = false;
-                info.Visible = false;
-                sccess.Visible = false;
+                if (reqAmt >= 250)
+                {
+                    decimal AdminCharge = (reqAmt * 5 / 100);
+                   // decimal tds = (reqAmt * 5 / 100);
+                    decimal amount = reqAmt - AdminCharge;
+                    txtTotal.Text = amount.ToString();
+                    txtadmincharge.Text = AdminCharge.ToString();
+                    // txtTDS.Text = tds.ToString();
+                    warning.Visible = false;
+                    danger.Visible = false;
+                    sccess.Visible = false;
+                    info.Visible = false;
+                    sccess.Visible = false;
+                }
+                else
+                {
+                    warning.Visible = false;
+                    danger.Visible = false;
+                    sccess.Visible = false;
+                    info.Visible = false;
+                    lbwarning.Text = "Minimum Withdrawal 250 INR";
+                    warning.Visible = true;
+                    txtAmt.Text = "";
+                    txtAmt.Focus();
+
+                }
             }
+
             else
             {
+                btnaction.Visible = false;
                 warning.Visible = false;
-                danger.Visible = false;
                 sccess.Visible = false;
                 info.Visible = false;
-                lbwarning.Text = "Minimum Withdrawal 100 INR";
-                warning.Visible = true;
-                txtAmt.Text = "";
-                txtAmt.Focus();
+                lbdanger.Text = "You can applied Withdrawal Monday to Friday 10 AM TO 6:00 PM";
+
+                danger.Visible = true;
+                txtAmt.ReadOnly = true;
 
             }
-           
+
         }
         catch (Exception ex)
         { }

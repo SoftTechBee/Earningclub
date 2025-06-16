@@ -49,7 +49,7 @@ public partial class Member_Default : System.Web.UI.Page
     {
         try
         {
-            string sql = "select product,toroi,descrption,Imgurl,MaxDays,PerDays,PackID,CAST(mrp as int) as min,CAST(soldrate as int) as max from tblproduct ";
+            string sql = "select product,toroi,descrption,Imgurl,times,MaxDays,PerDays,PackID,CAST(mrp as int) as min,CAST(soldrate as int) as max from tblproduct ";
             DataTable dt = objcon.ReturnDataTableSql(sql);
             if (dt.Rows.Count > 0)
             {

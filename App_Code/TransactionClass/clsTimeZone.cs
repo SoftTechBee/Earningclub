@@ -14,7 +14,12 @@ public class clsTimeZone
         // TODO: Add constructor logic here
         //
     }
+    public string returnCurrentSurverTimeHH()
+    {
+        string time = DateTime.Now.AddHours(0).ToString("HH");
+        return time;
 
+    }
     public DateTime returnDateTimeServerMachTime()
     {
         string time = DateTime.Now.AddHours(0).ToString();

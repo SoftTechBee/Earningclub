@@ -93,7 +93,7 @@
              <td><%#DataBinder.Eval(Container.DataItem, "DOR", "{0:dd/MM/yyyy}")%></td>
           
             <td>
-    <asp:Button ID="Button1"  runat="server" CssClass="btn btn-flat btn-success" Text="Approved" CommandName="Approved"  CommandArgument='<%#Eval("RID")%>'/></td>
+    <asp:Button ID="Button1"  runat="server" CssClass="btn btn-flat btn-success" Text="Approved" CommandName="Approved"  CommandArgument='<%#Eval("RID")%>' OnClientClick="return confirmAction();"/></td>
          <td>
     <asp:Button ID="Button2"  runat="server" CssClass="btn btn-flat btn-danger" Text="Reject" CommandName="Reject"  CommandArgument='<%#Eval("RID")%>'/></td>
        
@@ -116,9 +116,24 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      </div>
+
       <!-- /.row -->
-    </section>
+       <script>
+                  // The function below will start the confirmation dialog
+                  function confirmAction() {
+                      let confirmAction = confirm("Are you sure to execute this action?");
+
+                      if (confirmAction) {
+                          alert("Action Successfully executed");
+                          return true;
+                      }
+                      else {
+                          alert("Action Canceled");
+                          return false;
+                      }
+                  }
+       </script>
+
     <!-- /.content -->
 
     

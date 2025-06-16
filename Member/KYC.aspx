@@ -37,13 +37,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link active text-white" id="bank-tab1" data-bs-toggle="tab" href="#bank" role="tab" aria-controls="bank" aria-selected="true">Bank Details</a>
                                     </li>
-                                    <%--<li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link  text-white" id="adhaar-tab20" data-bs-toggle="tab" href="#adhaar" role="tab" aria-controls="kyc" aria-selected="false">Adhaar Card Details</a>
                                     </li>
                                    
                                     <li class="nav-item">
                                         <a class="nav-link text-white" id="drivingtab" data-bs-toggle="tab" href="#pan" role="tab" aria-controls="profile" aria-selected="false">PanCard Details </a>
-                                    </li> --%>
+                                    </li> 
                                    
                                   
                                 </ul>
@@ -52,7 +52,7 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                             <div id="BankReject" runat="server" visible="false" class="alert alert-danger alert-dismissible fade show">
-                                                <strong>KYC</strong>&nbsp;Bank Detils Reject
+                                                <strong>KYC</strong>&nbsp;Bank Details Reject
                                             </div>
 
                                             <div class="form-group row">

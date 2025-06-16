@@ -8,17 +8,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login ||Earning Club</title>
+    <title>Login-page ||Earning Club</title>
 
     <meta name="description" content="Achieve new heights of success in life Start your own Business" />
     <meta name="keywords" content="Earning Club, businessEarning Club, login. ">
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
-
+     
    <link rel="icon" type="image/x-icon" href="../Loginassets/img/logo/favicon.png" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
