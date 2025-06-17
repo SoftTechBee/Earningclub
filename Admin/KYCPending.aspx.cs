@@ -28,7 +28,7 @@ public partial class Admin_KYCPending : System.Web.UI.Page
             Sql += " CONVERT(varchar,TblKYC.AutoDate,106) As requestdate, ";
             Sql += " ('Pending') AS status, (TblKYC.UserName) as username, (register.Name) as fullname ";
             Sql += " FROM TblKYC INNER JOIN  register ON TblKYC.UserName = register.Username ";
-            Sql += " Where TblKYC.IsStatus in (2,3) Order by TblKYC.AutoCode asc   ";
+            Sql += " Where TblKYC.IsStatus in (2) Order by TblKYC.AutoCode asc   ";
             if (txtsearch.Text.Length > 0)
             {
                 Sql += "and username='" + txtsearch.Text + "'";

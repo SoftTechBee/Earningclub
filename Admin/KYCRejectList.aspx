@@ -32,7 +32,7 @@
 
                 <div class=" form-group row row align-items-center mb-3">
                     <div class="col-lg-12" style="overflow: auto;">
-                        <table class="table table-bordered table-responsive table-hover" style="display: none!important;">
+                        <table class="table table-bordered table-responsive table-hover" >
                             <thead class="table-danger">
                                 <tr>
                                     <th>Sn.</th>

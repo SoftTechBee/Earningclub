@@ -51,6 +51,7 @@ public partial class Admin_Default2 : System.Web.UI.Page
             lblBranch.InnerHtml = Rs.Rows[0]["BranchName"].ToString();
             lblAccountNumber.InnerHtml = Rs.Rows[0]["AccountNumber"].ToString();
             lblIFSC.InnerHtml = Rs.Rows[0]["IFSC"].ToString();
+            lbGpay.InnerHtml = Rs.Rows[0]["UPI"].ToString();
 
             if (Rs.Rows[0]["BankStatus"].ToString() == "Approved")
             {
@@ -153,10 +154,10 @@ public partial class Admin_Default2 : System.Web.UI.Page
         {
             Sql = "Update TblKYC Set BankStatus ='Approved' Where UserName ='" + UserName + "'";
             Sql += " Update TblKyc Set IsStatus = 1 ";
-            Sql += " Where BankStatus ='Approved'"; 
-            Sql += " And AdhaarFrontStatus ='Approved'";  
-            Sql += " And PanStatus ='Approved'";
-            Sql += " And UserName ='" + UserName + "'";
+            //Sql += " Where BankStatus ='Approved'"; 
+            //Sql += " And AdhaarFrontStatus ='Approved'";  
+            //Sql += " And PanStatus ='Approved'";
+            Sql += " Where UserName ='" + UserName + "'";
             objAMD.AMD(Sql);
 
             FillFormKYC();
@@ -244,57 +245,57 @@ public partial class Admin_Default2 : System.Web.UI.Page
     }
 
 
-    //protected void btnReject_Click(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-    //        if (hndTitle.Value == "Bank Details")
-    //        {
-    //            Sql = "Update TblKYC Set  IsStatus = 3 , BankStatus ='Reject', BankRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-    //        else if (hndTitle.Value == "Adhaar Card")
-    //        {
-    //            Sql = "Update TblKYC Set  IsStatus = 3 , AdhaarFrontStatus ='Reject',AdhaarBackStatus ='Reject' , AdhaarFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-    //        else if (hndTitle.Value == "Voter Card")
-    //        {
-    //            Sql = "Update TblKYC Set  IsStatus = 3 , VoterFrontStatus ='Reject',VoterBackStatus ='Reject' , VoterFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-    //        else if (hndTitle.Value == "Driving License")
-    //        {
-    //            Sql = "Update TblKYC Set  IsStatus = 3 , DrivingFrontStatus ='Reject',DrivingBackStatus ='Reject' , DrivingFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-    //        else if (hndTitle.Value == "Passport Card")
-    //        {
-    //            Sql = "Update TblKYC Set  IsStatus = 3 , PassportFrontStatus ='Reject',PassportBackStatus ='Reject' , PassportFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-    //        else 
-    //        {
-    //            Sql = "Update TblKYC Set IsStatus = 3 , PanStatus ='Reject' , PanRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
-    //        }
-            
-    //        objAMD.AMD(Sql);
-    //        FillFormKYC();
+    protected void btnReject_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (hndTitle.Value == "Bank Details")
+            {
+                Sql = "Update TblKYC Set  IsStatus = 3 , BankStatus ='Reject', BankRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
+            else if (hndTitle.Value == "Adhaar Card")
+            {
+                Sql = "Update TblKYC Set  IsStatus = 3 , AdhaarFrontStatus ='Reject',AdhaarBackStatus ='Reject' , AdhaarFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
+            else if (hndTitle.Value == "Voter Card")
+            {
+                Sql = "Update TblKYC Set  IsStatus = 3 , VoterFrontStatus ='Reject',VoterBackStatus ='Reject' , VoterFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
+            else if (hndTitle.Value == "Driving License")
+            {
+                Sql = "Update TblKYC Set  IsStatus = 3 , DrivingFrontStatus ='Reject',DrivingBackStatus ='Reject' , DrivingFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
+            else if (hndTitle.Value == "Passport Card")
+            {
+                Sql = "Update TblKYC Set  IsStatus = 3 , PassportFrontStatus ='Reject',PassportBackStatus ='Reject' , PassportFrontRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
+            else
+            {
+                Sql = "Update TblKYC Set IsStatus = 3 , PanStatus ='Reject' , PanRemarks ='" + txtremarks.InnerText + "' Where UserName ='" + UserName + "'";
+            }
 
-    //        if (hndTitle.Value == "Bank Details")
-    //        {
-    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Bank details has been rejected'); ", true);
-    //        }
-    //        else if (hndTitle.Value == "Adhaar Card")
-    //        {
-    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Adhaar details has been rejected'); ", true);
-    //        }
-    //        else
-    //        {
-    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Pan details has been rejected'); ", true);
-    //        }
-            
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        System.Diagnostics.Debug.WriteLine(ex.Message);
-    //    }
-    //}
+            objAMD.AMD(Sql);
+            FillFormKYC();
+
+            if (hndTitle.Value == "Bank Details")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Bank details has been rejected'); ", true);
+            }
+            else if (hndTitle.Value == "Adhaar Card")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Adhaar details has been rejected'); ", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Pan details has been rejected'); ", true);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+        }
+    }
 
 
 }

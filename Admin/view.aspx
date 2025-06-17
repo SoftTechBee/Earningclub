@@ -76,10 +76,11 @@
                                         <td colspan="2">Phone Pay UPI ID</td>
                                         <td colspan="2" id="lbPhonePay" runat="server"></td>
                                       </tr>
-                                      <tr>
-                                        <td colspan="2">Google Pay UPI ID</td>
+                                    --%>
+                                          <tr>
+                                        <td colspan="2"> UPI ID</td>
                                         <td colspan="2" id="lbGpay" runat="server"></td>
-                                      </tr>--%>
+                                      </tr>
                                       <tr>
                                       <td colspan="2">Image Passbook/Check</td>                  
                                         <td colspan="2" style="text-align:left;"> 
@@ -188,7 +189,7 @@
         </div>
     </div>   
 
-<%--    <div id="myNewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;" data-backdrop="static" data-keyboard="false">
+    <div id="myNewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -211,7 +212,7 @@
 				</div>
 			</div>
 		</div>
-	</div>--%>
+	</div>
 
     <script type="text/javascript" language="javascript">
         function rejectremarks(istype) {

@@ -196,7 +196,7 @@ namespace TripleITTransaction
         }
         public int KYCBank(string Username,
                      string AccountType, string BankName, string BranchName,
-                     string AccountNumber, string IFSC, string AccountHolderName, string ImagePassbook,
+                     string AccountNumber, string IFSC, string AccountHolderName, string ImagePassbook, string UPI,
                      string Transaction)
         {
             SqlParameter ptmUsername = new SqlParameter("@UserName", Username);
@@ -209,12 +209,13 @@ namespace TripleITTransaction
             SqlParameter ptmIFSC = new SqlParameter("@IFSC", IFSC);
             SqlParameter ptmAccountHolderName = new SqlParameter("@AccountHolderName", AccountHolderName);
             SqlParameter ptmImagePassbook = new SqlParameter("@ImagePassbook", ImagePassbook);
+            SqlParameter ptmUPI = new SqlParameter("@UPI", UPI);
 
             SqlParameter ptmTransaction = new SqlParameter("@Transaction", Transaction);
 
             int status = ObjConnection.ExecuteProcedure("KycBank", ptmUsername,
                                                         ptmAccountType, ptmBankName, ptmBranchName,
-                                                        ptmAccountNumber, ptmIFSC, ptmAccountHolderName, ptmImagePassbook,
+                                                        ptmAccountNumber, ptmIFSC, ptmAccountHolderName, ptmImagePassbook, ptmUPI,
                                                         ptmTransaction);
             return status;
         }

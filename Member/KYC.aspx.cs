@@ -24,7 +24,7 @@ public partial class Member_Default2 : System.Web.UI.Page
         {
             if (Session["newuser"] == null)
             {
-                Response.Redirect("../logout.aspx");
+                Response.Redirect("logout.aspx");
             }
 
             if (!IsPostBack) { FillFormKYC(); }
@@ -49,38 +49,38 @@ public partial class Member_Default2 : System.Web.UI.Page
             txtIFSC.Value = Rs.Rows[0]["IFSC"].ToString();
             //txtPaytm.Value = Rs.Rows[0]["Paytm"].ToString();
             //txtPhonePay.Value = Rs.Rows[0]["phonepay"].ToString();
-            //txtGpay.Value = Rs.Rows[0]["Bhim"].ToString();
+            txtGpay.Value = Rs.Rows[0]["upi"].ToString();
 
-            txtAdhaarNumber.Value = Rs.Rows[0]["AdhaarCardNumber"].ToString();
-           txtPanCardNumber.Value = Rs.Rows[0]["PanNumber"].ToString();
+           // txtAdhaarNumber.Value = Rs.Rows[0]["AdhaarCardNumber"].ToString();
+           //txtPanCardNumber.Value = Rs.Rows[0]["PanNumber"].ToString();
             // Images
             if (Rs.Rows[0]["ImagePassbook"].ToString() != "") { imgPassbook.Src = "../SoftImg/KYC/" + Rs.Rows[0]["ImagePassbook"].ToString(); }
             
             
-            if (Rs.Rows[0]["AdhaarFront"].ToString() != "") { imgadharfront.Src = "../SoftImg/KYC/" + Rs.Rows[0]["AdhaarFront"].ToString(); }
+            //if (Rs.Rows[0]["AdhaarFront"].ToString() != "") { imgadharfront.Src = "../SoftImg/KYC/" + Rs.Rows[0]["AdhaarFront"].ToString(); }
 
-            if (Rs.Rows[0]["AdhaarBack"].ToString() != "") { imgadharback.Src = "../SoftImg/KYC/" + Rs.Rows[0]["AdhaarBack"].ToString(); }
+            //if (Rs.Rows[0]["AdhaarBack"].ToString() != "") { imgadharback.Src = "../SoftImg/KYC/" + Rs.Rows[0]["AdhaarBack"].ToString(); }
            
-                if (Rs.Rows[0]["PanImage"].ToString() != "") { imgPancard.Src = "../SoftImg/KYC/" + Rs.Rows[0]["PanImage"].ToString(); }
+            //    if (Rs.Rows[0]["PanImage"].ToString() != "") { imgPancard.Src = "../SoftImg/KYC/" + Rs.Rows[0]["PanImage"].ToString(); }
 
             if (Rs.Rows[0]["IsStatus"].ToString() == "1")
             {
                 IsVerified.Visible = true;
 
                 ActionBank.Visible = false;
-                ActionAdhaar.Visible = false;
-                ActionPan.Visible = false;
+                //ActionAdhaar.Visible = false;
+                //ActionPan.Visible = false;
             }  
             else
             {
                 if (Rs.Rows[0]["BankStatus"].ToString() == "Approved") { ActionBank.Visible = false; }
-                if (Rs.Rows[0]["AdhaarFrontStatus"].ToString() == "Approved") { ActionAdhaar.Visible = false; }
-              if (Rs.Rows[0]["PanStatus"].ToString() == "Approved") { ActionPan.Visible = false; }
+              //  if (Rs.Rows[0]["AdhaarFrontStatus"].ToString() == "Approved") { ActionAdhaar.Visible = false; }
+              //if (Rs.Rows[0]["PanStatus"].ToString() == "Approved") { ActionPan.Visible = false; }
 
                 // Reject
                 if (Rs.Rows[0]["BankStatus"].ToString() == "Reject") { BankReject.Visible = true; }
-                if (Rs.Rows[0]["AdhaarFrontStatus"].ToString() == "Reject") { AdhaarReject.Visible = true; }
-               if (Rs.Rows[0]["PanStatus"].ToString() == "Reject") { PanReject.Visible = true; }
+               // if (Rs.Rows[0]["AdhaarFrontStatus"].ToString() == "Reject") { AdhaarReject.Visible = true; }
+               //if (Rs.Rows[0]["PanStatus"].ToString() == "Reject") { PanReject.Visible = true; }
             }
         }
     }
@@ -112,60 +112,14 @@ public partial class Member_Default2 : System.Web.UI.Page
                                         txtAccountNumber.Value,
                                         txtIFSC.Value,
                                         txtAccountHolderName.Value,
+                                        
                                       
-                                        Passbook, "N");
+                                        Passbook, txtGpay.Value, "N");
             if (status >0)
             {
                 FillFormKYC();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Bank details has been submited'); ", true);
-
-            }
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine(ex.Message);
-        }
-    }
-
-    protected void bntAdhaar_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string FrontImage = "";
-            string BackImage = "";
-
-            if (FileFrontAdhaar.HasFile)
-            {
-                string UploadedImageType = FileFrontAdhaar.PostedFile.ContentType.ToString().ToLower();
-                string UploadedImageFileName = FileFrontAdhaar.PostedFile.FileName;
-
-                //Create an image object from the uploaded file
-                System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FileFrontAdhaar.PostedFile.InputStream);
-
-                FrontImage = SessionData.Get<string>("Newuser") + "-Front-Adhaar-Card-" + System.IO.Path.GetFileName(FileFrontAdhaar.PostedFile.FileName);
-                string imgPath = "../SoftImg/KYC/" + FrontImage;
-
-                FileFrontAdhaar.SaveAs(Server.MapPath(imgPath.Trim()));
-            }
-
-            if (FileBackAdhaar.HasFile)
-            {
-                string UploadedImageType = FileBackAdhaar.PostedFile.ContentType.ToString().ToLower();
-                string UploadedImageFileName = FileBackAdhaar.PostedFile.FileName;
-
-                //Create an image object from the uploaded file
-                System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FileBackAdhaar.PostedFile.InputStream);
-
-                BackImage = SessionData.Get<string>("Newuser") + "-Back-Adhaar-Card-" + System.IO.Path.GetFileName(FileBackAdhaar.PostedFile.FileName);
-                string imgPath = "../SoftImg/KYC/" + BackImage;
-
-                FileBackAdhaar.SaveAs(Server.MapPath(imgPath.Trim()));
-            }
-
-            int status = objAMD.KYCAdhaar(Session["newuser"].ToString(), txtAdhaarNumber.Value, FrontImage, BackImage, "N");
-            if (status == 1) {
-                FillFormKYC(); 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Adhaar details has been submited'); ", true);
+                   Response.Write("<script>alert('Bank details has been submited')</script>");
                 
             }
         }
@@ -175,48 +129,96 @@ public partial class Member_Default2 : System.Web.UI.Page
         }
     }
 
-    protected void bntPan_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string PanImage = "";
+    //protected void bntAdhaar_Click(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        string FrontImage = "";
+    //        string BackImage = "";
 
-            if (FilePanCard.HasFile)
-            {
-                string UploadedImageType = FilePanCard.PostedFile.ContentType.ToString().ToLower();
-                string UploadedImageFileName = FilePanCard.PostedFile.FileName;
+    //        if (FileFrontAdhaar.HasFile)
+    //        {
+    //            string UploadedImageType = FileFrontAdhaar.PostedFile.ContentType.ToString().ToLower();
+    //            string UploadedImageFileName = FileFrontAdhaar.PostedFile.FileName;
 
-                //Create an image object from the uploaded file
-                System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FilePanCard.PostedFile.InputStream);
+    //            //Create an image object from the uploaded file
+    //            System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FileFrontAdhaar.PostedFile.InputStream);
 
-                PanImage = SessionData.Get<string>("Newuser") + "-Pan-Card-" + System.IO.Path.GetFileName(FilePanCard.PostedFile.FileName);
-                string imgPath = "../SoftImg/KYC/" + PanImage;
+    //            FrontImage = SessionData.Get<string>("Newuser") + "-Front-Adhaar-Card-" + System.IO.Path.GetFileName(FileFrontAdhaar.PostedFile.FileName);
+    //            string imgPath = "../SoftImg/KYC/" + FrontImage;
 
-                FilePanCard.SaveAs(Server.MapPath(imgPath.Trim()));
-            }
-            int SamePan = Convert.ToInt32(objDash.SamePancard(txtPanCardNumber.Value));
-            if (SamePan <= 3)
-            {
-                int status = objAMD.KYCPAN(Session["newuser"].ToString(), txtPanCardNumber.Value, PanImage, "N");
-                if (status == 1)
-                {
-                    FillFormKYC();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Pan details has been submited'); ", true);
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('this PanNumber Already used for 6 times..! try Another Pan Number'); ", true);
+    //            FileFrontAdhaar.SaveAs(Server.MapPath(imgPath.Trim()));
+    //        }
 
-            }
+    //        if (FileBackAdhaar.HasFile)
+    //        {
+    //            string UploadedImageType = FileBackAdhaar.PostedFile.ContentType.ToString().ToLower();
+    //            string UploadedImageFileName = FileBackAdhaar.PostedFile.FileName;
+
+    //            //Create an image object from the uploaded file
+    //            System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FileBackAdhaar.PostedFile.InputStream);
+
+    //            BackImage = SessionData.Get<string>("Newuser") + "-Back-Adhaar-Card-" + System.IO.Path.GetFileName(FileBackAdhaar.PostedFile.FileName);
+    //            string imgPath = "../SoftImg/KYC/" + BackImage;
+
+    //            FileBackAdhaar.SaveAs(Server.MapPath(imgPath.Trim()));
+    //        }
+
+    //        int status = objAMD.KYCAdhaar(Session["newuser"].ToString(), txtAdhaarNumber.Value, FrontImage, BackImage, "N");
+    //        if (status == 1) {
+    //            FillFormKYC(); 
+    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Adhaar details has been submited'); ", true);
+                
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        System.Diagnostics.Debug.WriteLine(ex.Message);
+    //    }
+    //}
+
+    //protected void bntPan_Click(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        string PanImage = "";
+
+    //        if (FilePanCard.HasFile)
+    //        {
+    //            string UploadedImageType = FilePanCard.PostedFile.ContentType.ToString().ToLower();
+    //            string UploadedImageFileName = FilePanCard.PostedFile.FileName;
+
+    //            //Create an image object from the uploaded file
+    //            System.Drawing.Image UploadedImage = System.Drawing.Image.FromStream(FilePanCard.PostedFile.InputStream);
+
+    //            PanImage = SessionData.Get<string>("Newuser") + "-Pan-Card-" + System.IO.Path.GetFileName(FilePanCard.PostedFile.FileName);
+    //            string imgPath = "../SoftImg/KYC/" + PanImage;
+
+    //            FilePanCard.SaveAs(Server.MapPath(imgPath.Trim()));
+    //        }
+    //        int SamePan = Convert.ToInt32(objDash.SamePancard(txtPanCardNumber.Value));
+    //        if (SamePan <= 3)
+    //        {
+    //            int status = objAMD.KYCPAN(Session["newuser"].ToString(), txtPanCardNumber.Value, PanImage, "N");
+    //            if (status == 1)
+    //            {
+    //                FillFormKYC();
+    //                ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('Pan details has been submited'); ", true);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "Successclick('this PanNumber Already used for 6 times..! try Another Pan Number'); ", true);
+
+    //        }
 
 
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine(ex.Message);
-        }
-    }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        System.Diagnostics.Debug.WriteLine(ex.Message);
+    //    }
+    //}
 
 
 

@@ -37,13 +37,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link active text-white" id="bank-tab1" data-bs-toggle="tab" href="#bank" role="tab" aria-controls="bank" aria-selected="true">Bank Details</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <%--<li class="nav-item">
                                         <a class="nav-link  text-white" id="adhaar-tab20" data-bs-toggle="tab" href="#adhaar" role="tab" aria-controls="kyc" aria-selected="false">Adhaar Card Details</a>
                                     </li>
                                    
                                     <li class="nav-item">
                                         <a class="nav-link text-white" id="drivingtab" data-bs-toggle="tab" href="#pan" role="tab" aria-controls="profile" aria-selected="false">PanCard Details </a>
-                                    </li> 
+                                    </li> --%>
                                    
                                   
                                 </ul>
@@ -102,10 +102,10 @@
                                                 </div>
                                             </div>
 
-                                           <%-- <div class="form-group row">
+                                        <%--    <div class="form-group row">
                                                 <label class="col-md-3 col-form-label">Google Pay UPI ID</label>
                                                 <div class="col-md-9">
-                                                    <input id="txtGpay" runat="server" class="form-control" type="text" />
+                                                    <input id="txtPhonePay" runat="server" class="form-control" type="text" />
                                                 </div>
                                             </div>
 
@@ -114,18 +114,18 @@
                                                 <div class="col-md-9">
                                                     <input id="txtPaytm" runat="server" class="form-control" type="text" />
                                                 </div>
-                                            </div>
+                                            </div>--%>
 
                                             <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Phone Pay UPI ID</label>
+                                                <label class="col-md-3 col-form-label">UPI ID</label>
                                                 <div class="col-md-9">
-                                                    <input id="txtPhonePay" runat="server" class="form-control" type="text" />
+                                                    <input id="txtGpay" runat="server" class="form-control" type="text" />
                                                 </div>
-                                            </div>--%>
+                                            </div>
 
                                             <asp:FileUpload ID="FilePassbook" runat="server" Style="display: none;" onchange="showimagepreview(this,'imgPassbook')" />
                                             <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Upload Passbook Image</label>
+                                                <label class="col-md-3 col-form-label">Upload Passbook/QR UPI Image</label>
                                                 <div class="col-md-9 img-chair">
                                                     <img id="imgPassbook" runat="server"
                                                         onclick="getinputimage('FilePassbook');"
@@ -143,85 +143,7 @@
                                             </center>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="adhaar" role="tabpanel">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div id="AdhaarReject" runat="server" visible="false" class="alert alert-danger alert-dismissible fade show">
-                                                <strong>KYC</strong>&nbsp;Adhaar Details Reject
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Adhaar Card Number</label>
-                                                <div class="col-md-9">
-                                                    <input id="txtAdhaarNumber" runat="server" class="form-control" type="text"
-                                                        maxlength="12" style="text-transform: uppercase;"
-                                                        onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" />
-                                                </div>
-                                            </div>
-
-                                            <asp:FileUpload ID="FileFrontAdhaar" runat="server" Style="display: none;" onchange="showimagepreview(this,'imgadharfront')" />
-                                            <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Upload Front Adhaar Image</label>
-                                                <div class="col-md-9 img-chair">
-                                                    <img id="imgadharfront" runat="server"
-                                                        onclick="getinputimage('FileFrontAdhaar');"
-                                                        style="width: 150px; height: 150px" src="../SoftImg/NoImage.jpeg" alt="Adhaar Front Image" />
-                                                </div>
-                                            </div>
-
-                                            <asp:FileUpload ID="FileBackAdhaar" runat="server" Style="display: none;" onchange="showimagepreview(this,'imgadharback')" />
-                                            <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Upload Back Adhaar Image</label>
-                                                <div class="col-md-9 img-chair">
-                                                    <img id="imgadharback" runat="server"
-                                                        onclick="getinputimage('FileBackAdhaar');"
-                                                        style="width: 150px; height: 150px" src="../SoftImg/NoImage.jpeg" alt="Adhaar Back Image" />
-                                                </div>
-                                            </div>
-
-                                            <center id="ActionAdhaar" runat="server">
-                                                <div class="form-group row mb-0">
-                                                    <div class="col-sm-10 offset-sm-2">
-                                                        <asp:Button ID="btnAdhaar" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="return ValidAdhaar();" OnClick="bntAdhaar_Click" />
-                                                        <button class="btn btn-primary" type="button" onclick="AdhaarClear();">Clear</button>
-                                                    </div>
-                                                </div>
-                                            </center>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pan" role="tabpanel">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                            <div id="PanReject" runat="server" visible="false" class="alert alert-danger alert-dismissible fade show">
-                                                <strong>KYC</strong>&nbsp;Pan Detils Reject
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Pan Id Number</label>
-                                                <div class="col-md-9">
-                                                    <input id="txtPanCardNumber" runat="server" class="form-control" type="text" maxlength="10" style="text-transform: uppercase;" />
-                                                </div>
-                                            </div>
-
-                                            <asp:FileUpload ID="FilePanCard" runat="server" Style="display: none;" onchange="showimagepreview(this,'imgPancard')" />
-                                            <div class="form-group row">
-                                                <label class="col-md-3 col-form-label">Upload Pan Card</label>
-                                                <div class="col-md-9 img-chair">
-                                                    <img id="imgPancard" runat="server"
-                                                        onclick="getinputimage('FilePanCard');"
-                                                        style="width: 150px; height: 150px" src="../SoftImg/NoImage.jpeg" alt="PanCard Image" />
-                                                </div>
-                                            </div>
-
-                                            <center id="ActionPan" runat="server">
-                                                <div class="form-group row mb-0">
-                                                    <div class="col-sm-10 offset-sm-2">
-                                                        <asp:Button ID="btnPan" runat="server" Text="Submit" CssClass="btn btn-success" OnClientClick="return ValidPan();" OnClick="bntPan_Click" />
-                                                        <button class="btn btn-primary" type="button" onclick="PanClear();">Clear</button>
-                                                    </div>
-                                                </div>
-                                            </center>
-                                        </div>
-                                    </div>
+                             
 
                                 
                                 </div>
@@ -287,37 +209,7 @@
             return true;
         }
 
-        function ValidAdhaar() {
-            var txtAdhaarNumber = $("#ContentPlaceHolder1_txtAdhaarNumber").val();
-            var errCount = 0;
-            if (txtAdhaarNumber.length <= 0) {
-                errCount++;
-                $('#ContentPlaceHolder1_txtAdhaarNumber').css('border-color', 'Red');
-            }
-            else { $('#ContentPlaceHolder1_txtAdhaarNumber').css('border-color', 'lightgrey'); }
-
-
-            if (errCount > 0) {
-                return false;
-            }
-            return true;
-        }
-
-        function ValidPan() {
-            var txtPanCardNumber = $("#ContentPlaceHolder1_txtPanCardNumber").val();
-            var errCount = 0;
-            if (txtPanCardNumber.length <= 0) {
-                errCount++;
-                $('#ContentPlaceHolder1_txtPanCardNumber').css('border-color', 'Red');
-            }
-            else { $('#ContentPlaceHolder1_txtPanCardNumber').css('border-color', 'lightgrey'); }
-
-
-            if (errCount > 0) {
-                return false;
-            }
-            return true;
-        }
+      
 
         function BankClear() {
             $("#ContentPlaceHolder1_txtBankName").val("");
@@ -328,17 +220,7 @@
             $("#ContentPlaceHolder1_imgPassbook").src = "assets/images/NoImage.jpeg";
         }
 
-        function AdhaarClear() {
-            $("#ContentPlaceHolder1_txtAdhaarNumber").val("");
-
-            $("#ContentPlaceHolder1_imgadharfront").src = "assets/images/NoImage.jpeg";
-            $("#ContentPlaceHolder1_imgadharback").src = "assets/images/NoImage.jpeg";
-        }
-
-        function PanClear() {
-            $("#ContentPlaceHolder1_txtPanCardNumber").val("");
-            $("#ContentPlaceHolder1_imgPancard").src = "assets/images/NoImage.jpeg";
-        }
+    
        
 
         function getinputimage(id) {
@@ -346,20 +228,20 @@
             document.getElementById("ContentPlaceHolder1_" + id).click();
         }
 
-                //function showimagepreview(input,inputimg) {
-                //    if (input.files && input.files[0]) {
-                //        var filerdr = new FileReader();
-                //        filerdr.onload = function (e) {
-                //            $('#ContentPlaceHolder1_' + inputimg).attr('src', e.target.result);
-                //        }
+                function showimagepreview(input,inputimg) {
+                    if (input.files && input.files[0]) {
+                        var filerdr = new FileReader();
+                        filerdr.onload = function (e) {
+                            $('#ContentPlaceHolder1_' + inputimg).attr('src', e.target.result);
+                        }
 
-                //        filerdr.readAsDataURL(input.files[0]);
-                //        imageData = filerdr.readAsDataURL(input.files[0]).split("base64,")[1]; ;
-                //    }
-                //    else {
-                //        $('#ContentPlaceHolder1_' + inputimg).attr('src', 'assets/images/NoImage.jpg');
-                //    }
-                //}
+                        filerdr.readAsDataURL(input.files[0]);
+                        imageData = filerdr.readAsDataURL(input.files[0]).split("base64,")[1]; ;
+                    }
+                    else {
+                        $('#ContentPlaceHolder1_' + inputimg).attr('src', 'assets/images/NoImage.jpg');
+                    }
+                }
 
 
         function showimagepreview(input, inputimg) {
@@ -389,8 +271,7 @@
         }
 
     </script>
-    <script type="text/javascript" language="javascript" src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function Successclick(msg) {
             swal(msg, "", "success")
