@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login-page ||Earning Club</title>
+    <title>Login-page ||Earning Club Earning</title>
 
     <meta name="description" content="Achieve new heights of success in life Start your own Business" />
     <meta name="keywords" content="Earning Club, businessEarning Club, login. ">
