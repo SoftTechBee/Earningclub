@@ -305,7 +305,22 @@
               </li>--%>
             </ul>     
           </li>
-        
+          <li>
+            <a class="has-arrow" href="javascript:;">
+              <div class="parent-icon"><i class="material-icons-outlined">view_agenda</i>
+              </div>
+              <div class="menu-title">LOAN Master</div>
+            </a>
+            <ul>
+            
+              <li><a href="LoanPending.aspx"><i class="material-icons-outlined">arrow_right</i>Continue List</a>
+              </li>
+             <li><a href="LoanCompleted.aspx"><i class="material-icons-outlined">arrow_right</i>Cpmpleted List</a>
+              </li>
+            
+            
+            </ul>
+          </li>
           <li>
             <a class="has-arrow" href="#">
               <div class="parent-icon"><i class="material-icons-outlined">card_giftcard</i>

@@ -228,7 +228,48 @@
                
                        </ul>
                    </li>
+                   
+                  
+                   <li class="sidebar-layout">
+                       <a href="#app9" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                           <i>
+                               <svg xmlns="http://www.w3.org/2000/svg" style="color: #fff !important;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather  feather-check">
+                         <path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
 
+                 </i>
+                           <span class="ml-2"> Loan Master</span>
+                           <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active" width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                           </svg>
+                       </a>
+                       <ul id="app9" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                           <li class=" sidebar-layout">
+                               <a href="LoanPendingUser.aspx" class="svg-icon">
+                                   <i class="">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                       </svg>
+                                   </i>
+                                   <span class="ml-2">Continue List</span>
+                               </a>
+                           </li>  
+                
+                           <li class=" sidebar-layout">
+                               <a href="LoanCompletedUser.aspx" class="svg-icon">
+                                   <i class="">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414" />
+                                       </svg>
+                                   </i>
+                                   <span class="ml-2">Completed List</span>
+                               </a>
+                           </li>  
+                           
+
+           
+             
+                       </ul>
+                   </li>
                   
                    <li class="sidebar-layout">
                        <a href="#app6" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">

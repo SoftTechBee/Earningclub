@@ -965,5 +965,14 @@ namespace TripleITTransaction
 
 
         }
+        public int LoanTransaction(int LID, string TransactionType)
+        {
+            SqlParameter ptrLID = new SqlParameter("@LID", LID);
+            SqlParameter ptrTransaction = new SqlParameter("@Transaction", TransactionType);
+
+            int result = ObjConnection.ExecuteProcedure("LoanMaster", ptrLID, ptrTransaction);
+            return result;
+        }
+
     }
 }
